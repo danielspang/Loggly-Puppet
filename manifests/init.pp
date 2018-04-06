@@ -62,6 +62,7 @@ class loggly (
     group   => 'root',
     mode    => '0644',
     source  => "puppet:///modules/${module_name}/loggly_full.crt",
+    notify => Exec['restart_rsyslogd'],
     require => File[$_cert_path],
   }
 }
